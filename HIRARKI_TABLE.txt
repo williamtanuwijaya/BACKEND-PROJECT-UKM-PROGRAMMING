@@ -11,7 +11,7 @@
  8. grades 
  9. answers
 
----------------------------------------------------------------------------------------------------------------
++-------------------------------------------------------------------------------------------------------------+
  # Hierarki Dependency Table
  # NOTE : 
  # - No 1 artinya tidak butuh Dependency dari table apapun
@@ -19,7 +19,7 @@
  # - table table pada no ke n yang sama, merupakan 1 tingkatan. dan Dependency nya berada di no atas atas nya
  # - Pengerjaan table sesuai Hierarki diperlukan untuk menghindari terjadinya masalah
  # - masalah tersebut akibat tabel yang diperlukan foreign key nya, justru belum ada.
----------------------------------------------------------------------------------------------------------------
++-------------------------------------------------------------------------------------------------------------+
  1. classrooms, lessons
  2. students, exams
  3. exam_sessions, questions
