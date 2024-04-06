@@ -1,0 +1,29 @@
+# Table Utama/Primary (Note : tidak punya foreign key)
+ 1. classrooms
+ 2. lessons 
+
+ # Table secondary (Note : punya >=1 foreign key)
+ 3. exams
+ 4. exam_sessions
+ 5. questions
+ 6. exam_groups
+ 7. students
+ 8. grades 
+ 9. answers
+
+---------------------------------------------------------------------------------------------------------------
+ # Hierarki Dependency Table
+ # NOTE : 
+ # - No 1 artinya tidak butuh Dependency dari table apapun
+ # - No ke n merupakan Dependency dari table n + 1
+ # - table table pada no ke n yang sama, merupakan 1 tingkatan. dan Dependency nya berada di no atas atas nya
+ # - Pengerjaan table sesuai Hierarki diperlukan untuk menghindari terjadinya masalah
+ # - masalah tersebut akibat tabel yang diperlukan foreign key nya, justru belum ada.
+---------------------------------------------------------------------------------------------------------------
+ 1. classrooms, lessons
+ 2. students, exams
+ 3. exam_sessions, questions
+ 4. exam_groups, grades
+ 5. answers
+
+
