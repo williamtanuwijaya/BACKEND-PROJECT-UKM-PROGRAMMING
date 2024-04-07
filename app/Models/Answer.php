@@ -9,22 +9,22 @@ class Answer extends Model
 {
     use HasFactory;
 
-    public function exam()
+    public function exams()
     {
         return $this->belongsTo(Exam::class,'exams_id');
     }
     
-    public function examSession()
+    public function exam_sessions()
     {
         return $this->belongsTo(ExamSession::class,'exams_id');
     }
     
-    public function question()
+    public function questions()
     {
         return $this->belongsTo(Question::class,'questions_id');
     }
     
-    public function student()
+    public function students()
     {
         return $this->belongsTo(Student::class,'students_id');
     }
