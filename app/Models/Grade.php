@@ -5,23 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class grades extends Model
+class Grade extends Model
 {
     use HasFactory;
 
-    public function exams()
+    public function exam()
     {
-        return $this->belongsTo(exams::class,'exams_id');
+        return $this->belongsTo(Exam::class,'exams_id');
     }
 
-    public function exam_sessions()
+    public function examSession()
     {
-        return $this->belongsTo(exam_sessions::class,'exam_sessions_id');
+        return $this->belongsTo(ExamSession::class,'exam_sessions_id');
     }
 
-    public function students()
+    public function student()
     {
-        return $this->belongsTo(students::class,'students_id');
+        return $this->belongsTo(Student::class,'students_id');
     }
 
 

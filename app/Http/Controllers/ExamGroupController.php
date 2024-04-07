@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\grades;
+use App\Models\ExamGroup;
 use Illuminate\Http\Request;
 
-class GradesController extends Controller
+class ExamGroupController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class GradesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(grades $grades)
+    public function show(ExamGroup $examGroup)
     {
         //
     }
@@ -42,7 +42,7 @@ class GradesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(grades $grades)
+    public function edit(ExamGroup $examGroup)
     {
         //
     }
@@ -50,7 +50,7 @@ class GradesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, grades $grades)
+    public function update(Request $request, ExamGroup $examGroup)
     {
         //
     }
@@ -58,7 +58,7 @@ class GradesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(grades $grades)
+    public function destroy(ExamGroup $examGroup)
     {
         //
     }
