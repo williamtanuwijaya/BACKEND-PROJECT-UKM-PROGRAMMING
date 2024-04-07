@@ -14,9 +14,9 @@ class Answer extends Model
         return $this->belongsTo(Exam::class,'exams_id');
     }
     
-    public function exam_sessions()
+    public function examSession()
     {
-        return $this->belongsTo(ExamSession::class,'exams_id');
+        return $this->belongsTo(ExamSession::class,'exam_sessions_id');
     }
     
     public function questions()

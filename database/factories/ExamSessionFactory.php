@@ -13,6 +13,7 @@ use App\Models\ExamSession;
         public function definition()
         {
             return [
+                'id' => $this->faker->unique()->randomDigit(),
                 'title' => $this->faker->sentence,
                 'exams_id' => function () {
                     return Exam::factory()->create()->id;

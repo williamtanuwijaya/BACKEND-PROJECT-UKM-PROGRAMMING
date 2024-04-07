@@ -13,6 +13,7 @@ class ClassroomFactory extends Factory
     public function definition()
     {
         return [
+            'id' => $this->faker->unique()->randomDigit(),
             'title' => $this->faker->word, 
         ];
     }

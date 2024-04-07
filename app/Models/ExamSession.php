@@ -16,17 +16,17 @@ class ExamSession extends Model
 
     public function examGroup() 
     {
-        return $this->hasMany(ExamGroup::class,'exam_sessions');
+        return $this->hasMany(ExamGroup::class,'exam_sessions_id');
     }
 
     public function grade() 
     {
-        return $this->hasMany(Answer::class,'exam_sessions');
+        return $this->hasMany(Answer::class,'exam_sessions_id');
     }
 
     public function answer() 
     {
-        return $this->hasMany(Answer::class,'exam_sessions');
+        return $this->hasMany(Answer::class,'exam_sessions_id');
     }
 
     protected $fillable = ['exams_id','title','start_time','end_time'];
