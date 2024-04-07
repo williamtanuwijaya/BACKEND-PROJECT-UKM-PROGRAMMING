@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("classrooms_id")->constrained();;
+            $table->bigInteger("nisn");
+            $table->string("name");
+            $table->string("password");
+            $table->enum("gender",['l','p']);
             $table->timestamps();
         });
     }

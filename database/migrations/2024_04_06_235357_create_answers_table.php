@@ -13,6 +13,16 @@ return new class extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("exams_id")->constrained();
+            $table->foreignId("exam_sessions_id")->constrained();
+            $table->foreignId("questions_id")->constrained();
+            $table->foreignId("students_id")->constrained();
+            $table->integer("question_order");
+            $table->string("answer_order");
+            $table->integer("answer");
+            $table->enum("is_correct",['y','n']);
+            
+
             $table->timestamps();
         });
     }

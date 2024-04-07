@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('exams', function (Blueprint $table) {
             $table->id();
+            $table->string("title");
+            $table->foreignId("lessons_id")->constrained();;
+            $table->foreignId("classrooms_id")->constrained();;
+            $table->integer("duration");
+            $table->text("description");
+            $table->enum("random_question",['y','n']);
+            $table->enum("random_answer",['y','n']);
+            $table->enum("show_answer",['y','n']);
+
             $table->timestamps();
         });
     }

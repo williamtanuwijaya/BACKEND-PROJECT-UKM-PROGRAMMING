@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('grades', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("exams_id")->constrained();
+            $table->foreignId("exam_sessions_id")->constrained();
+            $table->foreignId("students_id")->constrained();
+            $table->integer("duration");
+            $table->dateTime("start_time");
+            $table->dateTime("end_time");
+            $table->integer("total_correct");
+            $table->decimal("grade",total:5,places:2);
             $table->timestamps();
         });
     }

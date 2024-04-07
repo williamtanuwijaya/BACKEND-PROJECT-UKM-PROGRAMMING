@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('exam_sessions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("exams_id")->constrained();
+            $table->string("title");
+            $table->datetime("start_time");
+            $table->datetime("end_time");
             $table->timestamps();
         });
     }
