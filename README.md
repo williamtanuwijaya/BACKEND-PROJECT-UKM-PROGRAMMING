@@ -1,9 +1,50 @@
-HOW TO USE API
 
-(idk not now, for now just some routes for local use will do)
+# Backend Project UKM Programming
 
-GET localhost/api/classrooms -> will show all classrooms
-GET localhost/api/classrooms/{id} -> will show classroom with that id
-POST localhost/api/classrooms -> will add a product, accepted input = title(string)
-PUT / PATCH localhost/api/classrooms/{id} -> will update the details of the classroom with that id
-DELETE localhost/api/classrooms/{id} -> will delete classroom with that id
+A simple backend for online exam application used for a campus project
+
+
+## API Reference
+
+#### Get all classrooms
+
+```http
+  GET /api/items
+```
+
+#### Get classroom
+
+```http
+  GET /api/items/${id}
+```
+
+| Parameter | Type     | Description                             |
+| :-------- | :------- | :-------------------------------------- |
+| `id`      | `int`    | **Required**. Id of classrooms to fetch |
+
+#### Add classroom
+
+```http
+  POST /api/classrooms/
+```
+
+#### Edit classroom
+
+```http
+  PUT/PATCH /api/classrooms/{id}
+```
+
+| Parameter | Type     | Description                             |
+| :-------- | :------- | :-------------------------------------- |
+| `id`      | `int`    | **Required**. Id of classrooms to fetch |
+
+#### Delete classroom
+
+```http
+  DELETE /api/classrooms/{id}
+```
+
+| Parameter | Type     | Description                             |
+| :-------- | :------- | :-------------------------------------- |
+| `id`      | `int`    | **Required**. Id of classrooms to fetch |
+
