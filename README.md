@@ -9,34 +9,39 @@ A simple backend for online exam application used for a campus project
 #### Get all classrooms
 
 ```http
-  GET /api/items
+  GET /api/classrooms
 ```
 
 #### Get classroom
 
 ```http
-  GET /api/items/${id}
+  GET /api/classrooms/${id}
 ```
 
 | Parameter | Type     | Description                             |
 | :-------- | :------- | :-------------------------------------- |
-| `id`      | `int`    | **Required**. Id of classrooms to fetch |
+| `id`      | `int`    | **Required**. Id of classroom to fetch  |
 
 #### Add classroom
 
 ```http
-  POST /api/classrooms/
-```
-
-#### Edit classroom
-
-```http
-  PUT/PATCH /api/classrooms/{id}
+  POST /api/classrooms?title={changed}
 ```
 
 | Parameter | Type     | Description                             |
 | :-------- | :------- | :-------------------------------------- |
-| `id`      | `int`    | **Required**. Id of classrooms to fetch |
+| `changed` | `String` | **Required**. title of new classroom    |
+
+#### Edit classroom
+
+```http
+  PUT /api/classrooms/{id}?title={changed}
+```
+
+| Parameter | Type     | Description                             |
+| :-------- | :------- | :-------------------------------------- |
+| `id`      | `int`    | **Required**. Id of classroom to edit   |
+| `changed` | `String` | **Required**. title of new classroom    |
 
 #### Delete classroom
 
@@ -46,5 +51,51 @@ A simple backend for online exam application used for a campus project
 
 | Parameter | Type     | Description                             |
 | :-------- | :------- | :-------------------------------------- |
-| `id`      | `int`    | **Required**. Id of classrooms to fetch |
+| `id`      | `int`    | **Required**. Id of classroom to delete |
 
+#### Get all lessons
+
+```http
+  GET /api/lessons
+```
+
+#### Get lesson
+
+```http
+  GET /api/lessons/${id}
+```
+
+| Parameter | Type     | Description                             |
+| :-------- | :------- | :-------------------------------------- |
+| `id`      | `int`    | **Required**. Id of lesson to fetch     |
+
+#### Add classroom
+
+```http
+  POST /api/lessons?title={changed}
+```
+
+| Parameter | Type     | Description                             |
+| :-------- | :------- | :-------------------------------------- |
+| `changed` | `String` | **Required**. title of new lesson       |
+
+#### Edit classroom
+
+```http
+  PUT /api/lessons/{id}?title={changed}
+```
+
+| Parameter | Type     | Description                             |
+| :-------- | :------- | :-------------------------------------- |
+| `id`      | `int`    | **Required**. Id of classroom to edit   |
+| `changed` | `String` | **Required**. title of new classroom    |
+
+#### Delete classroom
+
+```http
+  DELETE /api/lessons/{id}
+```
+
+| Parameter | Type     | Description                             |
+| :-------- | :------- | :-------------------------------------- |
+| `id`      | `int`    | **Required**. Id of lesson to delete    |

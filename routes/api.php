@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\ClassroomController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LessonController;
+use App\Http\Controllers\ClassroomController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +27,10 @@ Route::get('classrooms/{classroom}', [ClassroomController::class, 'show'])->name
 Route::post('classrooms', [ClassroomController::class, 'store'])->name('classrooms.store');
 Route::put('classrooms/{classroom}', [ClassroomController::class, 'update'])->name('classrooms.update');
 Route::delete('classrooms/{classroom}', [ClassroomController::class, 'destroy'])->name('classrooms.destroy');
+
+//lessons
+Route::get('lessons', [LessonController::class, 'index'])->name('lessons.index');
+Route::get('lessons/{lesson}', [LessonController::class, 'show'])->name('lessons.show');
+Route::post('lessons', [LessonController::class, 'store'])->name('lessons.store');
+Route::put('lessons/{lesson}', [LessonController::class, 'update'])->name('lessons.update');
+Route::delete('lessons/{lesson}', [LessonController::class, 'destroy'])->name('lessons.destroy');
