@@ -29,7 +29,30 @@ class GradeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $exams_id = $request->input('exams_id');
+        $exam_sessions_id = $request->input('exam_sessions_id');
+        $students_id = $request->input('students_id');
+        $duration = $request->input('duration');
+        $start_time = $request->input('start_time');
+        $end_time = $request->input('end_time');
+        $total_correct = $request->input('total_correct');
+        $grade = $request->input('grade');
+
+        $grade = Grade::create([  
+            'exams_id' => $exams_id,
+            'exam_sessions_id' => $exam_sessions_id,
+            'students_id' => $students_id,
+            'duration' => $duration,
+            'start_time' => $start_time,
+            'end_time' => $end_time,
+            'total_correct' => $total_correct,
+            'grade' => $grade,
+        ]);
+
+        return response()->json([
+            'data' => new GradeResource($grade),
+        ], 201 );
+
     }
 
     /**
@@ -53,7 +76,21 @@ class GradeController extends Controller
      */
     public function update(Request $request, Grade $grade)
     {
-        //
+        $title = $request->input('title');
+        $exams_id = $request->input('exams_id');
+        $start_time = $request->input('start_time');
+        $end_time = $request->input('end_time');
+
+        $grade->update([  
+            'title' => $title,
+            'exams_id' => $exams_id,
+            'start_time' => $start_time,
+            'end_time' => $end_time,
+        ]);
+
+        return response()->json([
+            'data' => new GradeResource($grade),
+        ], 200 );
     }
 
     /**

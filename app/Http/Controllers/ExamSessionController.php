@@ -29,7 +29,22 @@ class ExamSessionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $title = $request->input('title');
+        $exams_id = $request->input('exams_id');
+        $start_time = $request->input('start_time');
+        $end_time = $request->input('end_time');
+
+        $examSession = ExamSession::create([  
+            'title' => $title,
+            'exams_id' => $exams_id,
+            'start_time' => $start_time,
+            'end_time' => $end_time,
+        ]);
+
+        return response()->json([
+            'data' => new ExamSessionResource($examSession),
+        ], 201 );
+
     }
 
     /**
@@ -53,7 +68,21 @@ class ExamSessionController extends Controller
      */
     public function update(Request $request, ExamSession $examSession)
     {
-        //
+        $title = $request->input('title');
+        $exams_id = $request->input('exams_id');
+        $start_time = $request->input('start_time');
+        $end_time = $request->input('end_time');
+
+        $examSession->update([  
+            'title' => $title,
+            'exams_id' => $exams_id,
+            'start_time' => $start_time,
+            'end_time' => $end_time,
+        ]);
+
+        return response()->json([
+            'data' => new ExamSessionResource($examSession),
+        ], 200 );
     }
 
     /**

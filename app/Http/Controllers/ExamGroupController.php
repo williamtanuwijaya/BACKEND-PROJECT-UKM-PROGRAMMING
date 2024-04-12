@@ -29,7 +29,20 @@ class ExamGroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $exams_id = $request->input('exams_id');
+        $exam_sessions_id = $request->input('exam_sessions_id');
+        $students_id = $request->input('students_id');
+
+        $examGroup = ExamGroup::create([  
+            'exams_id' => $exams_id,
+            'exam_sessions_id' => $exam_sessions_id,
+            'students_id' => $students_id,
+        ]);
+
+        return response()->json([
+            'data' => new ExamGroupResource($examGroup),
+        ], 201 );
+
     }
 
     /**
@@ -53,7 +66,19 @@ class ExamGroupController extends Controller
      */
     public function update(Request $request, ExamGroup $examGroup)
     {
-        //
+        $exams_id = $request->input('exams_id');
+        $exam_sessions_id = $request->input('exam_sessions_id');
+        $students_id = $request->input('students_id');
+
+        $examGroup->update([  
+            'exams_id' => $exams_id,
+            'exam_sessions_id' => $exam_sessions_id,
+            'students_id' => $students_id,
+        ]);
+
+        return response()->json([
+            'data' => new ExamGroupResource($examGroup),
+        ], 200 );
     }
 
     /**

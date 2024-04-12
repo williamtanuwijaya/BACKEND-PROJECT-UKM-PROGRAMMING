@@ -29,7 +29,31 @@ class ExamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $title = $request->input('title');
+        $lessons_id = $request->input('lessons_id');
+        $classroom_id = $request->input('classroom_id');
+        $duration = $request->input('duration');
+        $description = $request->input('description');
+        $random_question = $request->input('random_question');
+        $random_answer = $request->input('random_answer');
+        $show_answer = $request->input('show_answer');
+    
+        $exam = Exam::create([  
+            'title' => $title,
+            'lessons_id' => $lessons_id,
+            'classroom_id' => $classroom_id,
+            'duration' => $duration,
+            'description' => $description,
+            'random_question' => $random_question,
+            'random_answer' => $random_answer,
+            'show_answer' => $show_answer,
+           
+        ]);
+
+        return response()->json([
+            'data' => new ExamResource($exam),
+        ], 201 );
+
     }
 
     /**
@@ -53,7 +77,29 @@ class ExamController extends Controller
      */
     public function update(Request $request, Exam $exam)
     {
-        //
+        $title = $request->input('title');
+        $lessons_id = $request->input('lessons_id');
+        $classroom_id = $request->input('classroom_id');
+        $duration = $request->input('duration');
+        $description = $request->input('description');
+        $random_question = $request->input('random_question');
+        $random_answer = $request->input('random_answer');
+        $show_answer = $request->input('show_answer');
+
+        $exam->update([  
+            'title' => $title,
+            'lessons_id' => $lessons_id,
+            'classroom_id' => $classroom_id,
+            'duration' => $duration,
+            'description' => $description,
+            'random_question' => $random_question,
+            'random_answer' => $random_answer,
+            'show_answer' => $show_answer,
+        ]);
+
+        return response()->json([
+            'data' => new ExamResource($exam),
+        ], 200 );
     }
 
     /**
