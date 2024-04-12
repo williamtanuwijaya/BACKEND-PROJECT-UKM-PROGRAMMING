@@ -29,10 +29,18 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        $student_title = $request->input('title');
+        $classroom_id = $request->input('classroom_id');
+        $student_nisn = $request->input('nisn');
+        $student_name = $request->input('name');
+        $student_password = $request->input('password');
+        $student_gender = $request->input('gender');
 
         $student = Student::create([
-            'title' => $student_title,
+            'classroom_id' => $classroom_id,
+            'student_nisn' => $student_nisn,
+            'student_name' => $student_name,
+            'student_password' => $student_password,
+            'student_gender' => $student_gender,
         ]);
 
         return response()->json([
@@ -61,10 +69,18 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        $student_title = $request->input('title');
+        $classroom_id = $request->input('classroom_id');
+        $student_nisn = $request->input('nisn');
+        $student_name = $request->input('name');
+        $student_password = $request->input('password');
+        $student_gender = $request->input('gender');
 
         $student->update([
-            'title' => $student_title,
+            'classroom_id' => $classroom_id,
+            'student_nisn' => $student_nisn,
+            'student_name' => $student_name,
+            'student_password' => $student_password,
+            'student_gender' => $student_gender,
         ]);
 
         return response()->json([
