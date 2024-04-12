@@ -8,12 +8,12 @@ class ClassroomFactory extends Factory
 {
   
     protected $model = Classroom::class;
-
+    protected static $id = 1;
     
     public function definition()
     {
         return [
-            'id' => $this->faker->unique()->randomDigit(),
+            'id' => static::$id++,
             'title' => $this->faker->word, 
         ];
     }

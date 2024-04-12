@@ -9,11 +9,12 @@ use App\Models\ExamSession;
     class ExamSessionFactory extends Factory
     {
         protected $model = ExamSession::class;
-    
+        protected static $id = 1;
+
         public function definition()
         {
             return [
-                'id' => $this->faker->unique()->randomDigit(),
+                'id' =>static::$id++,
                 'title' => $this->faker->sentence,
                 'exams_id' => function () {
                     return Exam::factory()->create()->id;
