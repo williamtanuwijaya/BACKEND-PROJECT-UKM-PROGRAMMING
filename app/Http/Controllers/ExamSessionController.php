@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ExamSessionResource;
 use App\Models\ExamSession;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class ExamSessionController extends Controller
      */
     public function index()
     {
-        //
+        return ExamSession::all();
     }
 
     /**
@@ -36,7 +37,7 @@ class ExamSessionController extends Controller
      */
     public function show(ExamSession $examSession)
     {
-        //
+        return new ExamSessionResource($examSession);
     }
 
     /**
@@ -60,6 +61,7 @@ class ExamSessionController extends Controller
      */
     public function destroy(ExamSession $examSession)
     {
-        //
+        $examSession->delete();
+        return response()->json(null,204);
     }
 }

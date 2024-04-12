@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ExamGroupResource;
 use App\Models\ExamGroup;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class ExamGroupController extends Controller
      */
     public function index()
     {
-        //
+        return ExamGroup::all();
     }
 
     /**
@@ -36,7 +37,7 @@ class ExamGroupController extends Controller
      */
     public function show(ExamGroup $examGroup)
     {
-        //
+        return new ExamGroupResource($examGroup);
     }
 
     /**
@@ -60,6 +61,7 @@ class ExamGroupController extends Controller
      */
     public function destroy(ExamGroup $examGroup)
     {
-        //
+        $examGroup->delete();
+        return response()->json(null,204);
     }
 }

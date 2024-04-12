@@ -1,6 +1,5 @@
 <?php
-
-namespace Tests\Unit\Models;
+namespace Tests\Feature\Models;
 
 use App\Models\Exam;
 use App\Models\Lesson;

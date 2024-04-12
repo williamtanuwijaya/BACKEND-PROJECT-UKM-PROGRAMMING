@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\GradeResource;
 use App\Models\Grade;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class GradeController extends Controller
      */
     public function index()
     {
-        //
+        return Grade::all();
     }
 
     /**
@@ -36,7 +37,7 @@ class GradeController extends Controller
      */
     public function show(Grade $grade)
     {
-        //
+        return new GradeResource($grade);
     }
 
     /**
@@ -60,6 +61,7 @@ class GradeController extends Controller
      */
     public function destroy(Grade $grade)
     {
-        //
+        $grade->delete();
+        return response()->json(null,204);
     }
 }

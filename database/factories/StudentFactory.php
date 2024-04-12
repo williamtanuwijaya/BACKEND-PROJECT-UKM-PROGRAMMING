@@ -21,7 +21,7 @@ class StudentFactory extends Factory
             'classrooms_id' => $this->faker->randomElement($classroomIds),
             'nisn' => $this->faker->unique()->randomNumber(9),
             'name' => $this->faker->name,
-            'password' => bcrypt('password'), // Ini hanya contoh, Anda mungkin ingin menggunakan cara lain untuk menghasilkan password
+            'password' => bcrypt('password'), //contoh ngab
             'gender' => $this->faker->randomElement(['l', 'p']),
             'created_at' => $this->faker->dateTimeBetween('-2 years', 'now'),
             'updated_at' => now(),

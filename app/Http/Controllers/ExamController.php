@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ExamResource;
 use App\Models\Exam;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class ExamController extends Controller
      */
     public function index()
     {
-        //
+        return Exam::all();
     }
 
     /**
@@ -36,7 +37,7 @@ class ExamController extends Controller
      */
     public function show(Exam $exam)
     {
-        //
+        return new ExamResource($exam);
     }
 
     /**
@@ -60,6 +61,7 @@ class ExamController extends Controller
      */
     public function destroy(Exam $exam)
     {
-        //
+        $exam->delete();
+        return response()->json(null,204);
     }
 }
