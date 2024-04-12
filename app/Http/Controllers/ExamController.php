@@ -31,7 +31,7 @@ class ExamController extends Controller
     {
         $title = $request->input('title');
         $lessons_id = $request->input('lessons_id');
-        $classroom_id = $request->input('classroom_id');
+        $classroom_id = $request->input('classrooms_id');
         $duration = $request->input('duration');
         $description = $request->input('description');
         $random_question = $request->input('random_question');
@@ -41,7 +41,7 @@ class ExamController extends Controller
         $exam = Exam::create([  
             'title' => $title,
             'lessons_id' => $lessons_id,
-            'classroom_id' => $classroom_id,
+            'classrooms_id' => $classroom_id,
             'duration' => $duration,
             'description' => $description,
             'random_question' => $random_question,
@@ -79,7 +79,7 @@ class ExamController extends Controller
     {
         $title = $request->input('title');
         $lessons_id = $request->input('lessons_id');
-        $classroom_id = $request->input('classroom_id');
+        $classroom_id = $request->input('classrooms_id');
         $duration = $request->input('duration');
         $description = $request->input('description');
         $random_question = $request->input('random_question');
@@ -89,7 +89,7 @@ class ExamController extends Controller
         $exam->update([  
             'title' => $title,
             'lessons_id' => $lessons_id,
-            'classroom_id' => $classroom_id,
+            'classrooms_id' => $classroom_id,
             'duration' => $duration,
             'description' => $description,
             'random_question' => $random_question,

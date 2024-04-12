@@ -47,47 +47,47 @@ Route::get('students', [StudentController::class, 'index'])->name('students.inde
 Route::get('students/{student}', [StudentController::class, 'show'])->name('students.show');
 Route::post('students', [StudentController::class, 'store'])->name('students.store');
 Route::put('students/{student}', [StudentController::class, 'update'])->name('students.update');
-Route::delete('students/{Student}', [StudentController::class, 'destroy'])->name('students.destroy');
+Route::delete('students/{student}', [StudentController::class, 'destroy'])->name('students.destroy');
 
 //exams
 Route::get('exams',[ExamController::class,'index'])->name('exams.index');
-Route::get('exams/{exams}',[ExamController::class,'show'])->name('exams.show');
+Route::get('exams/{exam}',[ExamController::class,'show'])->name('exams.show');
 Route::post('exams',[ExamController::class,'store'])->name('exams.store');
-Route::put('exams/{exams}',[ExamController::class,'update'])->name('exams.update');
-Route::delete('exams/{exams}',[ExamController::class,'destroy'])->name('exams.destroy');
+Route::put('exams/{exam}',[ExamController::class,'update'])->name('exams.update');
+Route::delete('exams/{exam}',[ExamController::class,'destroy'])->name('exams.destroy');
 
 //examSessions
-Route::get('examSessions',[ExamSessionController::class,'index'])->name('examSessions.index');
-Route::get('examSessions/{examSessions}',[ExamSessionController::class,'show'])->name('examSessions.show');
-Route::post('examSessions',[ExamSessionController::class,'store'])->name('examSessions.store');
-Route::put('examSessions/{examSessions}',[ExamSessionController::class,'update'])->name('examSessions.update');
-Route::delete('examSessions/{examSessions}',[ExamSessionController::class,'destroy'])->name('examSessions.destroy');
+Route::get('exam-sessions',[ExamSessionController::class,'index'])->name('exam-sessions.index');
+Route::get('exam-sessions/{examSession}',[ExamSessionController::class,'show'])->name('exam-sessions.show');
+Route::post('exam-sessions',[ExamSessionController::class,'store'])->name('exam-sessions.store');
+Route::put('exam-sessions/{examSession}',[ExamSessionController::class,'update'])->name('exam-sessions.update');
+Route::delete('exam-sessions/{examSession}',[ExamSessionController::class,'destroy'])->name('exam-sessions.destroy');
 
 //questions
 Route::get('questions',[QuestionController::class,'index'])->name('questions.index');
-Route::get('questions/{questions}',[QuestionController::class,'show'])->name('questions.show');
+Route::get('questions/{question}',[QuestionController::class,'show'])->name('questions.show');
 Route::post('questions',[QuestionController::class,'store'])->name('questions.store');
-Route::put('questions/{questions}',[QuestionController::class,'update'])->name('questions.update');
-Route::delete('questions/{questions}',[QuestionController::class,'destroy'])->name('questions.destroy');
+Route::put('questions/{question}',[QuestionController::class,'update'])->name('questions.update');
+Route::delete('questions/{question}',[QuestionController::class,'destroy'])->name('questions.destroy');
 
 //examGroups
-Route::get('examGroups',[ExamGroupController::class,'index'])->name('examGroups.index');
-Route::get('examGroups/{examGroups}',[ExamGroupController::class,'show'])->name('examGroups.show');
-Route::post('examGroups',[ExamGroupController::class,'store'])->name('examGroups.store');
-Route::put('examGroups/{examGroups}',[ExamGroupController::class,'update'])->name('examGroups.update');
-Route::delete('examGroups/{examGroups}',[ExamGroupController::class,'destroy'])->name('examGroups.destroy');
+Route::get('exam-groups',[ExamGroupController::class,'index'])->name('exam-groups.index');
+Route::get('exam-groups/{examGroup}',[ExamGroupController::class,'show'])->name('exam-groups.show');
+Route::post('exam-groups',[ExamGroupController::class,'store'])->name('exam-groups.store');
+Route::put('exam-groups/{examGroup}',[ExamGroupController::class,'update'])->name('exam-groups.update');
+Route::delete('exam-groups/{examGroup}',[ExamGroupController::class,'destroy'])->name('exam-groups.destroy');
 
 
 //grades
 Route::get('grades',[GradeController::class,'index'])->name('grades.index');
-Route::get('grades/{grades}',[GradeController::class,'show'])->name('grades.show');
+Route::get('grades/{grade}',[GradeController::class,'show'])->name('grades.show');
 Route::post('grades',[GradeController::class,'store'])->name('grades.store');
-Route::put('grades/{grades}',[GradeController::class,'update'])->name('grades.update');
-Route::delete('grades/{grades}',[GradeController::class,'destroy'])->name('grades.destroy');
+Route::put('grades/{grade}',[GradeController::class,'update'])->name('grades.update');
+Route::delete('grades/{grade}',[GradeController::class,'destroy'])->name('grades.destroy');
 
 //answers
 Route::get('answers',[AnswerController::class,'index'])->name('answers.index');
-Route::get('answers/{answers}',[AnswerController::class,'show'])->name('answers.show');
+Route::get('answers/{answer}',[AnswerController::class,'show'])->name('answers.show');
 Route::post('answers',[AnswerController::class,'store'])->name('answers.store');
-Route::put('answers/{answers}',[AnswerController::class,'update'])->name('answers.update');
-Route::delete('answers/{answers}',[AnswerController::class,'destroy'])->name('answers.destroy');
+Route::put('answers/{answer}',[AnswerController::class,'update'])->name('answers.update');
+Route::delete('answers/{answer}',[AnswerController::class,'destroy'])->name('answers.destroy');
