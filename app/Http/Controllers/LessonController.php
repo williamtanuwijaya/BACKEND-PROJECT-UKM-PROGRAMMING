@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Lesson;
 use Illuminate\Http\Request;
+use App\Models\Lesson;
+use App\Http\Resources\LessonResource;
 
 class LessonController extends Controller
 {
@@ -12,7 +13,7 @@ class LessonController extends Controller
      */
     public function index()
     {
-        //
+        return Lesson::all();
     }
 
     /**
@@ -28,7 +29,15 @@ class LessonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $lesson_title = $request->input('title');
+
+        $lesson = Lesson::create([
+            'title' => $lesson_title,
+        ]);
+
+        return response()->json([
+            'data' => new LessonResource($lesson)
+        ], 201);
     }
 
     /**
@@ -36,13 +45,13 @@ class LessonController extends Controller
      */
     public function show(Lesson $lesson)
     {
-        //
+        return new LessonResource($lesson);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Lesson $lesson)
+    public function edit(string $id)
     {
         //
     }
@@ -52,7 +61,15 @@ class LessonController extends Controller
      */
     public function update(Request $request, Lesson $lesson)
     {
-        //
+        $lesson_title = $request->input('title');
+
+        $lesson->update([
+            'title' => $lesson_title,
+        ]);
+
+        return response()->json([
+            'data' => new LessonResource($lesson)
+        ], 200);
     }
 
     /**
@@ -60,6 +77,7 @@ class LessonController extends Controller
      */
     public function destroy(Lesson $lesson)
     {
-        //
+        $lesson->delete();
+        return response()->json(null,204);
     }
 }
