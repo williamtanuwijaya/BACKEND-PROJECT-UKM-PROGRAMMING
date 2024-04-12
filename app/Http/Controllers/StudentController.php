@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
 use Illuminate\Http\Request;
+use App\Models\Student;
+use App\Http\Resources\StudentResource;
 
 class StudentController extends Controller
 {
@@ -12,7 +13,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        return Student::all();
     }
 
     /**
@@ -28,7 +29,15 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $student_title = $request->input('title');
+
+        $student = Student::create([
+            'title' => $student_title,
+        ]);
+
+        return response()->json([
+            'data' => new StudentResource($student)
+        ], 201);
     }
 
     /**
@@ -36,13 +45,13 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
+        return new StudentResource($student);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Student $student)
+    public function edit(string $id)
     {
         //
     }
@@ -52,7 +61,15 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        //
+        $student_title = $request->input('title');
+
+        $student->update([
+            'title' => $student_title,
+        ]);
+
+        return response()->json([
+            'data' => new StudentResource($student)
+        ], 200);
     }
 
     /**
@@ -60,6 +77,7 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        $student->delete();
+        return response()->json(null,204);
     }
 }
