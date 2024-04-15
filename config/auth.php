@@ -64,11 +64,14 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
         'students' => [
-            'driver' => 'database',
-            'table' => 'students',
+            'driver' => 'eloquent',
+            'model' => App\Models\Student::class,
         ],
+        // 'students' => [
+        //     'driver' => 'database',
+        //     'table' => 'students',
+        // ],
     ],
 
     /*
