@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
-use App\Models\User;
+use App\Models\Student;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use Illuminate\Http\JsonResponse;
-class RegisterController extends BaseController
+class StudentRegisterController extends BaseController
 {
     /**
      * Register api
@@ -17,8 +17,10 @@ class RegisterController extends BaseController
     public function register(Request $request): JsonResponse
     {
         $validator = Validator::make($request->all(), [
+            'classrooms_id' => 'required',
             'name' => 'required',
             'nisn' => 'required',
+            'gender' => 'required',
             'password' => 'required',
             'c_password' => 'required|same:password',
         ]);
@@ -27,10 +29,10 @@ class RegisterController extends BaseController
         }
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
-        $user = User::create($input);
-        $success['token'] =  $user->createToken('MyApp')->plainTextToken;
-        $success['name'] =  $user->name;
-        return $this->sendResponse($success, 'User register successfully.');
+        $student = Student::create($input);
+        $success['token'] =  $student->createToken('MyApp')->plainTextToken;
+        $success['name'] =  $student->name;
+        return $this->sendResponse($student, $success, 'Student register successfully.');
     }
     /**
      * Login api
@@ -40,10 +42,10 @@ class RegisterController extends BaseController
     public function login(Request $request): JsonResponse
     {
         if(Auth::attempt(['nisn' => $request->nisn, 'password' => $request->password])){ 
-            $user = Auth::user(); 
-            $success['token'] =  $user->createToken('MyApp')->plainTextToken; 
-            $success['name'] =  $user->name;
-            return $this->sendResponse($success, 'User login successfully.');
+            $student = Auth::user(); 
+            $success['token'] =  $student->createToken('MyApp')->plainTextToken; 
+            $success['name'] =  $student->name;
+            return $this->sendResponse($student, $success, 'Student login successfully.');
         }else{ 
             return $this->sendError('Unauthorised.', ['error'=>'Unauthorised']);
         } 

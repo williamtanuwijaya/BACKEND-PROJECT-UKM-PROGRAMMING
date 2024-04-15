@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('nisn')->unique();
-            $table->string('role');
             $table->timestamp('nisn_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

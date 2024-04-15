@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string("name");
             $table->string("password");
             $table->enum("gender",['l','p']);
+            $table->timestamp('nisn_verified_at')->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
     }

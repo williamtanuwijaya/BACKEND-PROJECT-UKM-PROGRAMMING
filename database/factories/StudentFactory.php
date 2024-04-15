@@ -6,6 +6,7 @@ namespace Database\Factories;
 use App\Models\Student;
 use App\Models\Classroom;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class StudentFactory extends Factory
 {
@@ -23,6 +24,8 @@ class StudentFactory extends Factory
             'name' => $this->faker->name,
             'password' => bcrypt('password'), //contoh ngab
             'gender' => $this->faker->randomElement(['l', 'p']),
+            'nisn_verified_at' => now(),
+            'remember_token' => Str::random(10),
             'created_at' => $this->faker->dateTimeBetween('-2 years', 'now'),
             'updated_at' => now(),
         ];

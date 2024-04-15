@@ -12,6 +12,7 @@ use App\Http\Controllers\GradeController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\API\RegisterController;
+use App\Http\Controllers\API\StudentRegisterController;
 use App\Models\ExamSession;
 
 /*
@@ -29,6 +30,12 @@ Route::controller(RegisterController::class)->group(function(){
     //delete / comment register route after registering admin, for obvious security reason
     Route::post('register', 'register');
     Route::post('login', 'login');
+});
+
+Route::controller(StudentRegisterController::class)->group(function(){
+    //delete / comment register route after registering admin, for obvious security reason
+    Route::post('students/register', 'register');
+    Route::post('students/login', 'login');
 });
 
 Route::middleware('auth:sanctum')->group(function () {
