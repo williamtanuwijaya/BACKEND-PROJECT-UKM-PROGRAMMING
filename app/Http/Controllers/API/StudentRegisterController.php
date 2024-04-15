@@ -10,44 +10,77 @@ use Illuminate\Http\JsonResponse;
 class StudentRegisterController extends BaseController
 {
     /**
-     * Register api
+     * Create a new controller instance.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
-    public function register(Request $request): JsonResponse
+    public function __construct()
     {
-        $validator = Validator::make($request->all(), [
-            'classrooms_id' => 'required',
-            'name' => 'required',
-            'nisn' => 'required',
-            'gender' => 'required',
-            'password' => 'required',
-            'c_password' => 'required|same:password',
-        ]);
-        if($validator->fails()){
-            return $this->sendError('Validation Error.', $validator->errors());       
-        }
-        $input = $request->all();
-        $input['password'] = bcrypt($input['password']);
-        $student = Student::create($input);
-        $success['token'] =  $student->createToken('MyApp')->plainTextToken;
-        $success['name'] =  $student->name;
-        return $this->sendResponse($student, $success, 'Student register successfully.');
+        $this->middleware('student.auth')->except('login');
     }
-    /**
-     * Login api
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function login(Request $request): JsonResponse
+
+    public function login(Request $request)
     {
-        if(Auth::attempt(['nisn' => $request->nisn, 'password' => $request->password])){ 
-            $student = Auth::user(); 
-            $success['token'] =  $student->createToken('MyApp')->plainTextToken; 
+        // Validasi
+        $validator = Validator::make($request->all(), [
+            'nisn' => 'required',
+            'password' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return $this->sendError('Validation Error.', $validator->errors(), JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
+        }
+
+        // Percobaan login
+        $credentials = $request->only('nisn', 'password');
+        if (Auth::guard('student')->attempt($credentials)) {
+            $student = Auth::guard('student')->user(); // Mengambil user yang berhasil diautentikasi
+            $success['token'] =  $student->createToken('MyApp')->plainTextToken;
             $success['name'] =  $student->name;
             return $this->sendResponse($student, $success, 'Student login successfully.');
-        }else{ 
-            return $this->sendError('Unauthorised.', ['error'=>'Unauthorised']);
-        } 
+        } else {
+            return $this->sendError('Invalid credentials.', [], JsonResponse::HTTP_UNAUTHORIZED);
+        }
     }
+    // /**
+    //  * Register api
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function register(Request $request): JsonResponse
+    // {
+    //     $validator = Validator::make($request->all(), [
+    //         'classrooms_id' => 'required',
+    //         'name' => 'required',
+    //         'nisn' => 'required',
+    //         'gender' => 'required',
+    //         'password' => 'required',
+    //         'c_password' => 'required|same:password',
+    //     ]);
+    //     if($validator->fails()){
+    //         return $this->sendError('Validation Error.', $validator->errors());       
+    //     }
+    //     $input = $request->all();
+    //     $input['password'] = bcrypt($input['password']);
+    //     $student = Student::create($input);
+    //     $success['token'] =  $student->createToken('MyApp')->plainTextToken;
+    //     $success['name'] =  $student->name;
+    //     return $this->sendResponse($student, $success, 'Student register successfully.');
+    // }
+    // /**
+    //  * Login api
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function login(Request $request): JsonResponse
+    // {
+    //     if(Auth::attempt(['nisn' => $request->nisn, 'password' => $request->password])){ 
+    //         $student = Auth::user(); 
+    //         $success['token'] =  $student->createToken('MyApp')->plainTextToken; 
+    //         $success['name'] =  $student->name;
+    //         return $this->sendResponse($student, $success, 'Student login successfully.');
+    //     }else{ 
+    //         return $this->sendError('Unauthorised.', ['error'=>'Unauthorised']);
+    //     } 
+    // }
 }
