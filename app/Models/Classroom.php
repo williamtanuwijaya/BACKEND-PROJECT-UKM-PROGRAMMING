@@ -11,14 +11,13 @@ class Classroom extends Model
 
     public function student() 
     {
-        return $this->hasMany(Student::class,'classrooms_id');
+        return $this->hasMany(Student::class,'classroom_id');
     }
 
     public function exam() 
     {
-        return $this->hasMany(Exam::class,'classrooms_id');
+        return $this->hasMany(Exam::class,'classroom_id');
     }
     
     protected $fillable = ['title'];
 }
-

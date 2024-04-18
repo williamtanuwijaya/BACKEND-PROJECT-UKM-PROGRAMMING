@@ -11,7 +11,7 @@ class Lesson extends Model
 
     public function exam() 
     {
-        return $this->hasMany(Exam::class,'lessons_id');
+        return $this->hasMany(Exam::class,'lesson_id');
     }
 
     protected $fillable = ['title'];

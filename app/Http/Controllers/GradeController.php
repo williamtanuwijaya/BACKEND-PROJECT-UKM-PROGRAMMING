@@ -2,26 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\GradeResource;
 use App\Models\Grade;
+use App\Models\Classroom;
+use App\Models\Lesson;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Resources\GradeResource;
 
 class GradeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Grade::all();
-    }
+        $jsonData = $request->json()->all();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $classroom = Classroom::find($jsonData['classroom_id']);
+        $lesson = Lesson::find($jsonData['lesson_id']);
+
+        return response()->json(['classroom' => $classroom->title, 'lesson' => $lesson->title], 200);
     }
 
     /**
@@ -29,9 +29,8 @@ class GradeController extends Controller
      */
     public function store(Request $request)
     {
-        $exams_id = $request->input('exams_id');
-        $exam_sessions_id = $request->input('exam_sessions_id');
-        $students_id = $request->input('students_id');
+        $exam_id = $request->input('exam_id');
+        $student_id = $request->input('student_id');
         $duration = $request->input('duration');
         $start_time = $request->input('start_time');
         $end_time = $request->input('end_time');
@@ -39,9 +38,8 @@ class GradeController extends Controller
         $grade = $request->input('grade');
 
         $grade = Grade::create([  
-            'exams_id' => $exams_id,
-            'exam_sessions_id' => $exam_sessions_id,
-            'students_id' => $students_id,
+            'exam_id' => $exam_id,
+            'student_id' => $student_id,
             'duration' => $duration,
             'start_time' => $start_time,
             'end_time' => $end_time,
@@ -52,7 +50,6 @@ class GradeController extends Controller
         return response()->json([
             'data' => new GradeResource($grade),
         ], 201 );
-
     }
 
     /**
@@ -64,21 +61,12 @@ class GradeController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Grade $grade)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Grade $grade)
     {
-        $exams_id = $request->input('exams_id');
-        $exam_sessions_id = $request->input('exam_sessions_id');
-        $students_id = $request->input('students_id');
+        $exam_id = $request->input('exam_id');
+        $student_id = $request->input('student_id');
         $duration = $request->input('duration');
         $start_time = $request->input('start_time');
         $end_time = $request->input('end_time');
@@ -86,9 +74,8 @@ class GradeController extends Controller
         $grade_score = $request->input('grade');
 
         $grade->update([  
-            'exams_id' => $exams_id,
-            'exam_sessions_id' => $exam_sessions_id,
-            'students_id' => $students_id,
+            'exam_id' => $exam_id,
+            'student_id' => $student_id,
             'duration' => $duration,
             'start_time' => $start_time,
             'end_time' => $end_time,

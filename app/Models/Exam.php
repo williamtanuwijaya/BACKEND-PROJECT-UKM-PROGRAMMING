@@ -9,41 +9,25 @@ class Exam extends Model
 {
     use HasFactory;
 
+    public function grade()
+    {
+        return $this->hasOne(Grade::class);
+    }
+
     public function lesson()
     {
-        return $this->belongsTo(Lesson::class,'lessons_id');
+        return $this->belongsTo(Lesson::class,'lesson_id');
     }
 
     public function classroom()
     {
-        return $this->belongsTo(Classroom::class,'classrooms_id');
-    }
-
-    public function answer()
-    {
-        return $this->hasMany(Answer::class,'exams_id');
-    }
-
-    public function examSession()
-    {
-        return $this->hasMany(ExamSession::class,'exams_id');
-    }
-
-    public function examGroup()
-    {
-        return $this->hasMany(ExamGroup::class,'exams_id');
+        return $this->belongsTo(Classroom::class,'classroom_id');
     }
 
     public function question()
     {
-        return $this->hasMany(Question::class,'exams_id');
+        return $this->hasMany(Question::class,'exam_id');
     }
-    
-    public function grade()
-    {
-        return $this->hasMany(Grade::class,'exams_id');
-    }
-    
-    protected $fillable = ['title','lessons_id','classrooms_id','duration','description','random_question','random_answer','show_answer'];
 
+    protected $fillable = ['title','lesson_id','classroom_id','duration','description','random_question','random_answer','show_answer','start_time','end_time'];
 }

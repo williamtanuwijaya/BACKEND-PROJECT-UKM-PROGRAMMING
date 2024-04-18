@@ -11,19 +11,11 @@ class Grade extends Model
 
     public function exam()
     {
-        return $this->belongsTo(Exam::class,'exams_id');
-    }
-
-    public function examSession()
-    {
-        return $this->belongsTo(ExamSession::class,'exam_sessions_id');
+        return $this->belongsTo(Exam::class,'exam_id');
     }
 
     public function student()
     {
-        return $this->belongsTo(Student::class,'students_id');
+        return $this->belongsTo(Student::class,'student_id');
     }
-
-
-    protected $fillable = ['exams_id','exam_sessions_id','students_id','duration','start_time','end_time','total_correct','grade'];
 }
